@@ -75,13 +75,15 @@ const Login = () => {
             )}
           </div>
         </div>
-        <div className="border-black border-2  w-1/3 h-auto rounded-md">
-          <h3 className=" text-center p-5 text-xl font-bold">Login</h3>
-          <div className="p-5 flex gap-2 flex-col">
+        <div className="border-blue-500 border-2  w-1/3 h-auto rounded-md">
+          <h3 className=" text-center p-5 text-xl font-bold text-blue-500">
+            Login
+          </h3>
+          <div className="p-3 flex gap-1 flex-col">
             <label>Email:</label>
             <input
-              className={`p-3  focus:outline-none rounded-md focus-within:border-2 ${
-                errors.email ? "border-red-500" : ""
+              className={`p-2  focus:outline-none rounded-md focus-within:border-2 border-2  ${
+                errors.email ? "border-red-400" : "border-slate-200"
               }`}
               placeholder="Enter your email"
               type="text"
@@ -94,11 +96,11 @@ const Login = () => {
               </p>
             )}
           </div>
-          <div className="p-5 flex gap-2 flex-col">
+          <div className="p-3 flex gap-1 flex-col">
             <label>Password:</label>
             <input
-              className={`p-3  focus:outline-none rounded-md focus-within:border-2 ${
-                errors.password ? "border-red-500" : ""
+              className={`p-2  focus:outline-none rounded-md focus-within:border-2 border-2  ${
+                errors.password ? "border-red-400" : "border-slate-200"
               }`}
               placeholder="Enter your email"
               type="password"
@@ -109,8 +111,8 @@ const Login = () => {
               <p className=" text-red-500 text-xs">{errors.password.message}</p>
             )}
           </div>
-          <div className="p-5">
-            <button className="p-2 border-2 border-black w-full rounded-md bg-black text-white">
+          <div className="p-3">
+            <button className="p-2 border-2 border-blue-500 w-full rounded-md bg-blue-500 text-white">
               Login
             </button>
           </div>

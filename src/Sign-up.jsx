@@ -12,6 +12,7 @@ const schema = z.object({
     .max(20)
     .regex(/^[A-Z]/, "Username must start with an uppercase letter"),
   email: z.string().email("Please enter the email"),
+  gender: z.string("Please select a gender"),
   password: z
     .string()
     .regex(
@@ -75,13 +76,15 @@ const SignUp = () => {
           )}
           {errorMessage && <p className="p-5 text-red-500">{errorMessage}</p>}
         </div>
-        <div className="border-black border-2  w-1/3 h-auto rounded-md">
-          <h3 className=" text-center p-5 text-xl font-bold">Sign Up</h3>
-          <div className="p-5 flex gap-2 flex-col">
+        <div className="border-blue-300 border-2  w-1/3 h-auto rounded-md">
+          <h3 className=" text-center p-5 text-xl font-bold text-blue-500">
+            Sign Up
+          </h3>
+          <div className="p-3 flex gap-1 flex-col">
             <label>Username:</label>
             <input
-              className={`p-3  focus:outline-none focus-within:border-2 w-full rounded ${
-                errors.username ? "border-red-500" : " "
+              className={`p-2  focus:outline-none focus-within:border-2 border-2  w-full rounded ${
+                errors.username ? "border-red-400" : "border-slate-200 "
               }`}
               placeholder="Enter your name"
               type="text"
@@ -91,11 +94,23 @@ const SignUp = () => {
               <p className=" text-xs text-red-500">{errors.username.message}</p>
             )}
           </div>
-          <div className="p-5 flex gap-2 flex-col">
+          <div className="p-3 flex flex-col gap-1">
+            <label>Gender:</label>
+            <div className="flex gap-2">
+              <input type="radio" value="female" {...register("gender")} />
+              Female
+              <input type="radio" value="male" {...register("gender")} />
+              Male
+            </div>
+            {errors.gender && (
+              <p className=" text-xs text-red-500">{errors.gender.message}</p>
+            )}
+          </div>
+          <div className="p-3 flex gap-1 flex-col">
             <label>Email:</label>
             <input
-              className={`p-3 focus:outline-none focus-within:border-2 w-4/5 rounded ${
-                errors.email ? "border-red-500" : " "
+              className={`p-2 focus:outline-none focus-within:border-2 border-2 w-full  rounded ${
+                errors.email ? "border-red-400" : "border-slate-200 "
               }`}
               placeholder="Enter your email"
               type="text"
@@ -105,11 +120,11 @@ const SignUp = () => {
               <p className="text-xs text-red-500">{errors.email.message}</p>
             )}
           </div>
-          <div className="p-5 flex gap-2 flex-col">
+          <div className="p-3 flex gap-1 flex-col">
             <label>Password:</label>
             <input
-              className={`p-3 focus:outline-none focus-within:border-2 w-4/5 rounded ${
-                errors.password ? "border-red-500" : " "
+              className={`p-2 focus:outline-none focus-within:border-2 border-2 w-full rounded ${
+                errors.password ? "border-red-400" : "border-slate-200 "
               }`}
               placeholder="Enter your password"
               type="password"
@@ -119,12 +134,18 @@ const SignUp = () => {
               <p className=" text-xs text-red-500">{errors.password.message}</p>
             )}
           </div>
-          <div className="p-5">
+          <div className="p-3">
+            <div className="flex gap-2 p-2">
+              <p className="">Already have an account</p>
+              <a href="/login" className=" text-blue-500 hover:text-blue-300">
+                Sign In
+              </a>
+            </div>
             <button
               type="submit"
-              className="p-2 border-2 border-black w-full rounded-md bg-black text-white"
+              className="p-2 border-2 border-blue-500 w-full rounded-md bg-blue-500 text-white"
             >
-              Create Account
+              Sign Up
             </button>
           </div>
         </div>
